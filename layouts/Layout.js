@@ -1,8 +1,14 @@
-import Nav from "@/components/navbar";
 import React from "react";
+import Navi from "@/components/Navi";
+import { Container } from "react-bootstrap";
 
 const Layout = ({ children }) => {
-  return <React.Fragment>{children}</React.Fragment>;
+  return (
+    <React.Fragment>
+      <Navi />
+      {children}
+    </React.Fragment>
+  );
 };
 
 export default Layout;
