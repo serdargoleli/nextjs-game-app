@@ -20,3 +20,15 @@
 .cardLink:hover .card {
   background: #0000001f;
 }
+
+.platformImage {
+  width: 24px;
+  height: 24px;
+  margin-left: 10px;
+}
+
+.flexEnd {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}

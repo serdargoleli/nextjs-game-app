@@ -1,24 +1,20 @@
 import axios from "axios";
 import { gamesAction } from "@/store/games-slice";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Card, Col, Container, Offcanvas, Row, Form } from "react-bootstrap";
+import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import GameCard from "@/components/GameCard";
-import { useState } from "react";
-import Link from "next/link";
 
 const Home = ({ data }) => {
   const dispatcher = useDispatch();
-  let [moreGameLimit, setMoreGameLimit] = useState(12);
   dispatcher(gamesAction.setGames(data));
   const gamesState = useSelector((state) => state.games.games);
-  let games = gamesState.slice(0, moreGameLimit);
+  const viewGame = useSelector((state) => state.games.viewGame);
+  let games = gamesState.slice(0, viewGame);
   const categories = useSelector((state) => state.games.categories);
 
-  let [handleFilterToggle, setHandleFilterToggle] = useState(false);
-
   const getMoreGames = () => {
-    if (moreGameLimit <= games.length) {
-      setMoreGameLimit((moreGameLimit += 12));
+    if (viewGame <= games.length) {
+      dispatcher(gamesAction.incViewGame());
     }
   };
 
@@ -39,12 +35,6 @@ const Home = ({ data }) => {
               <Button className="my-3" onClick={() => getMoreGames()}>
                 More Games
               </Button>
-              <Card.Text>
-                Power By{" "}
-                <Link href={"https://www.freetogame.com/"} target={"_blank"}>
-                  freetogame.com
-                </Link>{" "}
-              </Card.Text>
             </div>
           </Col>
         </Row>

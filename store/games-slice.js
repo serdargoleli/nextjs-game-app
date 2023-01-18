@@ -4,6 +4,7 @@ const gamesSlice = createSlice({
   name: "games",
   initialState: {
     games: [],
+    viewGame: 24,
     categories: [
       "mmorpg",
       "shooter",
@@ -57,6 +58,9 @@ const gamesSlice = createSlice({
   reducers: {
     setGames: (state, actions) => {
       state.games = actions.payload;
+    },
+    incViewGame(state) {
+      state.viewGame += 24;
     },
   },
 });
