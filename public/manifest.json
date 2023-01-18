@@ -1,0 +1,22 @@
+{
+  "theme_color": "#ffffff",
+  "background_color": "#000000",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "name": "S'GAME",
+  "short_name": "S'GAME",
+  "description": "Free games to play on PC and Browsers",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

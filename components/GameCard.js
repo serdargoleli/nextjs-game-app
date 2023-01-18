@@ -26,7 +26,7 @@ const GameCard = ({ game }) => {
           <Card.Text className={styles.cardText}> {game.short_description} </Card.Text>
 
           <div className={styles.flexEnd}>
-            {game && browserGame(game.platform).map((image) => <img className={styles.platformImage} src={image} />)}
+            {game && browserGame(game.platform).map((image) => <img key={image} className={styles.platformImage} src={image} />)}
           </div>
         </Card.Body>
       </Card>

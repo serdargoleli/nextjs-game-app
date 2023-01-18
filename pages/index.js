@@ -23,7 +23,7 @@ const Home = ({ data }) => {
       <Container>
         <Row>
           {games.map((game) => (
-            <Col xs={"12"} md={"6"} lg={"3"} className="mb-4" key={game.id}>
+            <Col xs={"12"} md={"6"} lg={"3"} className="mb-4" key={game.id + "/" + game.title}>
               <GameCard game={game} />
             </Col>
           ))}

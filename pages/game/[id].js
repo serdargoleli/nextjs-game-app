@@ -4,7 +4,6 @@ import React from "react";
 import { Badge, Button, Carousel, Col, Container, Row } from "react-bootstrap";
 
 const GameDetails = ({ data }) => {
-  console.log(data);
   return (
     <div className="text-dark">
       <Head>
