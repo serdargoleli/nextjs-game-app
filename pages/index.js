@@ -1,7 +1,7 @@
 import axios from "axios";
 import { gamesAction } from "@/store/games-slice";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Card, Col, Container, Row, Dropdown } from "react-bootstrap";
+import { Button, Card, Col, Container, Row, Dropdown, Form, DropdownToggle } from "react-bootstrap";
 import GameCard from "@/components/GameCard";
 import { useState } from "react";
 
@@ -11,14 +11,11 @@ const Home = ({ data }) => {
   const gamesState = useSelector((state) => state.games.games); //storedan oyunları çek
   const viewGame = useSelector((state) => state.games.viewGame); // stordan limit sayısını çek
   const platform = useSelector((state) => state.games.platform); // stordan platform çek
-
-  let games = gamesState.slice(0, viewGame);
-
   const [filteredData, setFilteredData] = useState([]);
+  let games = gamesState.slice(0, viewGame);
 
   const getFilteredPlatformGame = (filter) => {
     let filteredData = [];
-
     if (filter) {
       filteredData = data.filter((game) => {
         return game.platform.indexOf(filter) > -1;
@@ -33,42 +30,58 @@ const Home = ({ data }) => {
       dispatcher(gamesAction.incViewGame());
     }
   };
+  const searchGame = (value) => {
+    let searchList = [];
+    if (value.length >= 2) {
+      setTimeout(() => {
+        searchList = data.filter((game) => {
+          return game.title.toLowerCase().includes(value);
+        });
+
+        setFilteredData(searchList);
+      }, 1000);
+    } else {
+      setFilteredData([]);
+    }
+  };
 
   return (
     <div className="bg-light pt-4">
-      <Container>
+      <Container style={{ minHeight: "100vh" }}>
         <Row>
           <Col xs="12">
             <Card className="mb-4">
-              <Card.Body className="d-flex justify-content-between">
+              <Card.Body className="d-flex justify-content-between flex-column flex-md-row">
+                <Dropdown className="mb-3 mb-md-0">
+                  <Dropdown.Toggle variant="none" className="ps-0">
+                    {filteredData.length > 0 ? filteredData[0].platform : "Platforms"}
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu className="px-3 overflow-auto">
+                    <Row>
+                      {platform.map((platform) => (
+                        <Col xs="12">
+                          <Dropdown.Item
+                            className="rounded"
+                            onClick={() => {
+                              getFilteredPlatformGame(platform);
+                            }}
+                          >
+                            {platform.toUpperCase()}
+                          </Dropdown.Item>
+                        </Col>
+                      ))}
+                    </Row>
+                  </Dropdown.Menu>
+                </Dropdown>
                 <div className="d-flex justify-content-between">
-                  <Dropdown>
-                    <Dropdown.Toggle variant="none" id="dropdown-basic">
-                      {filteredData.length > 0 ? filteredData[0].platform : "Platforms"}
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu className="px-3 overflow-auto">
-                      <Row>
-                        {platform.map((platform) => (
-                          <Col xs="12">
-                            <Dropdown.Item
-                              className="rounded"
-                              onClick={() => {
-                                getFilteredPlatformGame(platform);
-                              }}
-                            >
-                              {platform.toUpperCase()}
-                            </Dropdown.Item>
-                          </Col>
-                        ))}
-                      </Row>
-                    </Dropdown.Menu>
-                  </Dropdown>
+                  <Form.Control type="search" onChange={(event) => searchGame(event.target.value)} placeholder="Entery game name..." />
+
+                  {filteredData.length > 0 && (
+                    <Button size="sm" variant="danger" className="ms-4" onClick={() => getFilteredPlatformGame(null)}>
+                      Clear
+                    </Button>
+                  )}
                 </div>
-                {filteredData.length > 0 && (
-                  <Button size="sm" variant="danger" onClick={() => getFilteredPlatformGame(null)}>
-                    Clear
-                  </Button>
-                )}
               </Card.Body>
             </Card>
           </Col>

@@ -1,1 +1,4 @@
-
+.btn:active,
+.btn.show {
+  border: none !important;
+}
