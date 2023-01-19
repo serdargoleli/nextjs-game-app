@@ -1,6 +1,7 @@
 import axios from "axios";
 import Head from "next/head";
 import React from "react";
+
 import { Badge, Button, Carousel, Col, Container, Row } from "react-bootstrap";
 
 const GameDetails = ({ data }) => {
@@ -41,8 +42,8 @@ const GameDetails = ({ data }) => {
         <Container className="py-5">
           <Carousel fade>
             {data.screenshots.map((item) => (
-              <Carousel.Item>
-                <img key={item} className="d-block w-100 rounded" src={item.image} alt={data.title} />
+              <Carousel.Item key={item.id}>
+                <img className="d-block w-100 rounded" src={item.image} alt={data.title} />
               </Carousel.Item>
             ))}
           </Carousel>
