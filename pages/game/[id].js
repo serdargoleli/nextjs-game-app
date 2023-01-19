@@ -42,7 +42,7 @@ const GameDetails = ({ data }) => {
           <Carousel fade>
             {data.screenshots.map((item) => (
               <Carousel.Item>
-                <img className="d-block w-100 rounded" src={item.image} alt={data.title} />
+                <img key={item} className="d-block w-100 rounded" src={item.image} alt={data.title} />
               </Carousel.Item>
             ))}
           </Carousel>
