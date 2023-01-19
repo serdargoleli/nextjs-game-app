@@ -14,7 +14,7 @@ const gamesSlice = createSlice({
       "sports",
       "social",
       "sandbox",
-      " open-world",
+      "open-world",
       "survival",
       "pvp",
       "pve",
@@ -52,7 +52,7 @@ const gamesSlice = createSlice({
       "horror",
       "mmorts",
     ],
-    platform: ["pc", "browser", "all"],
+    platform: ["PC (Windows)", "Web Browser"],
     sorting: ["release-date", "popularity", "alphabetical", "relevance"],
   },
   reducers: {
