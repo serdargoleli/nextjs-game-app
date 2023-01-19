@@ -8,7 +8,7 @@ const Navi = () => {
       <Navbar bg="dark" variant="dark" expand="lg">
         <Container>
           <Link href="/" className="text-light text-decoration-none fw-bolder" style={{ fontSize: "20px" }}>
-            S'Game
+            S&apos;Game
           </Link>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">

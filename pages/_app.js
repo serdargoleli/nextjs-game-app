@@ -9,7 +9,7 @@ const App = ({ Component, pageProps }) => {
   return (
     <Provider store={store}>
       <Head>
-        <title>S'GAME FREE GAME PLAY TO</title>
+        <title>S&apos;GAME FREE GAME PLAY TO</title>
         <meta name="author" content="Serdar Göleli" />
         <meta name="description" content="Free games to play on PC and Browsers" />
         <link rel="manifest" href="/manifest.json" />

@@ -57,20 +57,17 @@ const Home = ({ data }) => {
                     {filteredData.length > 0 ? filteredData[0].platform : "Platforms"}
                   </Dropdown.Toggle>
                   <Dropdown.Menu className="px-3 overflow-auto">
-                    <Row>
-                      {platform.map((platform) => (
-                        <Col xs="12">
-                          <Dropdown.Item
-                            className="rounded"
-                            onClick={() => {
-                              getFilteredPlatformGame(platform);
-                            }}
-                          >
-                            {platform.toUpperCase()}
-                          </Dropdown.Item>
-                        </Col>
-                      ))}
-                    </Row>
+                    {platform.map((platform) => (
+                      <Dropdown.Item
+                        className="rounded"
+                        key={platform}
+                        onClick={() => {
+                          getFilteredPlatformGame(platform);
+                        }}
+                      >
+                        {platform.toUpperCase()}
+                      </Dropdown.Item>
+                    ))}
                   </Dropdown.Menu>
                 </Dropdown>
                 <div className="d-flex justify-content-between">
